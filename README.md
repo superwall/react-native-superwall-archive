@@ -27,23 +27,38 @@ npm install react-native-superwall
 
 ## Usage
 
+### Import
 ```js
 import { initPaywall, trigger } from 'react-native-superwall';
 
-//Even emitter for analyitics events
+import {
+  NativeModules,
+  NativeEventEmitter,
+} from 'react-native';
+```
+
+### Event emitter. Listen for Superwall events
+```js
 const eventEmitter = new NativeEventEmitter(NativeModules.Superwall);
+```
 
-//Initailize Superwall
+### Initailize Superwall
+```js
 initPaywall(<YOUR_API_KEY>, <OPTIONAL_REVENUECAT_KEY);
-//Trigger paywall
+```
+
+### Trigger paywall
+```js
 const res = await trigger(<Campaign_Name>);
+```
 
-
-//Listen for analyitics events
+### Listen for analyitics events
+```js
 eventEmitter.addListener('superwallAnalyticsEvent', (res) => {
   console.log('Superwall event', res?.event, JSON.stringify(res, null, 4));
 });
 ```
+
 List of Superwall tracked events: https://github.com/superwall-me/paywall-ios/blob/ed7eb99b839c8eb33479af92b490f2ddcd0d5053/Sources/Paywall/Documentation.docc/AutomaticallyTrackedEvents.md
 
 ## Contributing
