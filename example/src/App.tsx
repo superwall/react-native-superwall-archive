@@ -10,13 +10,13 @@ import {
 import { initPaywall, trigger } from 'react-native-superwall';
 const eventEmitter = new NativeEventEmitter(NativeModules.Superwall);
 
-const superwallApiKey: string = '<YOUR_API_KEY>';
+const superwallApiKey: string = '<YOUR_SUPERWALL_API_KEY>';
 const revenueCatApiKey: string | null = null; //Optional
 
 export default function App() {
   const [enableTrigger, setEnableTrigger] = useState(false);
   useEffect(() => {
-    if (superwallApiKey != '<YOUR_API_KEY>') {
+    if (superwallApiKey != '<YOUR_SUPERWALL_API_KEY>') {
       setEnableTrigger(true);
     }
     initPaywall(superwallApiKey, revenueCatApiKey);

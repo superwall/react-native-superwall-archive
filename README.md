@@ -44,7 +44,7 @@ const eventEmitter = new NativeEventEmitter(NativeModules.Superwall);
 
 ### Initailize Superwall
 ```js
-initPaywall(<YOUR_API_KEY>, <OPTIONAL_REVENUECAT_KEY);
+initPaywall(<YOUR_SUPERWALL_API_KEY>, <OPTIONAL_REVENUECAT_KEY);
 ```
 
 ### Trigger paywall
