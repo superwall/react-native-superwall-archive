@@ -305,7 +305,7 @@ PODS:
   - React-jsinspector (0.70.6)
   - React-logger (0.70.6):
     - glog
-  - react-native-superwall (0.0.11):
+  - react-native-superwall (0.0.1):
     - Paywall (~> 2.5.4)
     - React-Core
     - RevenueCat (~> 4.15)
@@ -573,7 +573,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: b4a65947391c658450151275aa406f2b8263178f
   React-jsinspector: 60769e5a0a6d4b32294a2456077f59d0266f9a8b
   React-logger: 1623c216abaa88974afce404dc8f479406bbc3a0
-  react-native-superwall: c2b4d3f5a7bd7d91d3c54e89e7117915573e9ea1
+  react-native-superwall: 396b1e181a6f3c34689c12cfc95df29a7ca6a71f
   React-perflogger: 8c79399b0500a30ee8152d0f9f11beae7fc36595
   React-RCTActionSheet: 7316773acabb374642b926c19aef1c115df5c466
   React-RCTAnimation: 5341e288375451297057391227f691d9b2326c3d

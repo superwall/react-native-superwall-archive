@@ -16,11 +16,10 @@ public var isActive = false;
 
 final class PaywallService {
     static var shared = PaywallService()
-    static func initPaywall(apiKey:String, revenueCatKey:String) {
-        if !revenueCatKey.isEmpty {
+    static func initPaywall(superwallApiKey:String, revenueCatApiKey:String) {
+        if !revenueCatApiKey.isEmpty {
             useRevenueCat = true;
         }
-        print(revenueCatKey)
         
         let options = PaywallOptions()
         // Uncomment to show debug logs
@@ -28,7 +27,7 @@ final class PaywallService {
         if(useRevenueCat){
             //Purchases.logLevel = .debug
             Purchases.configure(
-                with: Configuration.Builder(withAPIKey: revenueCatKey)
+                with: Configuration.Builder(withAPIKey: revenueCatApiKey)
                     .with(appUserID: nil)
                     .build()
             )
@@ -43,7 +42,7 @@ final class PaywallService {
         }
         
         Paywall.configure(
-            apiKey: apiKey,
+            apiKey: superwallApiKey,
             delegate: shared,
             options: options
         )

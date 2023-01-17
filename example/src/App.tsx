@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,12 +10,16 @@ import {
 import { initPaywall, trigger } from 'react-native-superwall';
 const eventEmitter = new NativeEventEmitter(NativeModules.Superwall);
 
-const apiKey: string = '<YOUR_API_KEY>';
-const revenueCatKey: string | null = null; //Optional
+const superwallApiKey: string = '<YOUR_API_KEY>';
+const revenueCatApiKey: string | null = null; //Optional
 
 export default function App() {
-  React.useEffect(() => {
-    initPaywall(apiKey, revenueCatKey);
+  const [enableTrigger, setEnableTrigger] = useState(false);
+  useEffect(() => {
+    if (superwallApiKey != '<YOUR_API_KEY>') {
+      setEnableTrigger(true);
+    }
+    initPaywall(superwallApiKey, revenueCatApiKey);
     eventEmitter.addListener('superwallAnalyticsEvent', (res) => {
       console.log(
         'superwall event',
@@ -37,8 +41,17 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      {!enableTrigger && (
+        <Text style={{ color: 'red' }}>
+          You need to set your superwallApiKey
+        </Text>
+      )}
       <Text>Superwall Example</Text>
-      <Button onPress={showPaywall} title={'Show Paywall'} />
+      <Button
+        onPress={showPaywall}
+        title={'Show Paywall'}
+        disabled={!enableTrigger}
+      />
     </View>
   );
 }

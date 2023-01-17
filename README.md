@@ -5,13 +5,13 @@ React-Native module for Superwall
 See the example folder for a demo or to test your paywalls
 
 This only works on iOS
-Superwall: https://superwall.com/
+Superwall: https://superwall.com/ \
 RevenueCat: https://www.revenuecat.com/
 
 ## Running the example
-Open example/App.tsx
-Update the apiKey var with your Superwall key
-Optional, update the revenueCatKey var with your RevenueCat key
+Open example/App.tsx\
+Update the superwallApiKey var with your Superwall api key\
+Optional, update the revenueCatKey var with your RevenueCat key\
 
 ```sh
 yarn
@@ -39,6 +39,7 @@ const res = await trigger(<Campaign_Name>);
 
 
 //Listen for analyitics events
+//List of tracked events https://github.com/superwall-me/paywall-ios/blob/ed7eb99b839c8eb33479af92b490f2ddcd0d5053/Sources/Paywall/Documentation.docc/AutomaticallyTrackedEvents.md
 eventEmitter.addListener('superwallAnalyticsEvent', (res) => {
   console.log('Superwall event', res?.event, JSON.stringify(res, null, 4));
 });

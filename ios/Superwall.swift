@@ -16,9 +16,9 @@ class Superwall: RCTEventEmitter {
       }
     
     
-    @objc(initPaywall:revenueCatKey:)
-    func initPaywall(apiKey:String, revenueCatKey:String) -> Void {
-        PaywallService.initPaywall(apiKey: apiKey, revenueCatKey: revenueCatKey)
+    @objc(initPaywall:revenueCatApiKey:)
+    func initPaywall(superwallApiKey:String, revenueCatApiKey:String) -> Void {
+        PaywallService.initPaywall(superwallApiKey: superwallApiKey, revenueCatApiKey: revenueCatApiKey)
     }
     
     

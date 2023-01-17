@@ -10,17 +10,17 @@
   "files": [
     "src",
     "lib",
-    "android",
+    "android_unsupported",
     "ios",
     "cpp",
     "*.podspec",
     "!lib/typescript/example",
     "!ios/build",
-    "!android/build",
-    "!android/gradle",
-    "!android/gradlew",
-    "!android/gradlew.bat",
-    "!android/local.properties",
+    "!android_unsupported/build",
+    "!android_unsupported/gradle",
+    "!android_unsupported/gradlew",
+    "!android_unsupported/gradlew.bat",
+    "!android_unsupported/local.properties",
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__",
@@ -34,7 +34,7 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install && yarn example pods",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build"
+    "clean": "del-cli example/ios/build"
   },
   "keywords": [
     "react-native",
@@ -42,7 +42,7 @@
     "android"
   ],
   "repository": "https://github.com/react-native-superwall/react-native-superwall",
-  "author": "react-native-superwall",
+  "author": "Steve McIntyre",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/react-native-superwall/react-native-superwall/issues"
