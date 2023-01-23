@@ -53,13 +53,19 @@ final class PaywallService {
 extension PaywallService: PaywallDelegate {
     //1
     func purchase(product: SKProduct)  {
-        Purchases.shared.purchase(product: StoreProduct(sk1Product: product)) {
-            (transaction, customerInfo, error, userCancelled) in
-            if customerInfo?.entitlements.active.isEmpty == false {
-                isActive = true;
-            } else {
-                isActive = false;
+        if (useRevenueCat) {
+            Purchases.shared.purchase(product: StoreProduct(sk1Product: product)) {
+                (transaction, customerInfo, error, userCancelled) in
+                if customerInfo?.entitlements.active.isEmpty == false {
+                    isActive = true;
+                } else {
+                    isActive = false;
+                }
             }
+        } else {
+            Task {
+                  try? await StoreKitService.shared.purchase(product)
+                }
         }
     }
     
@@ -79,8 +85,10 @@ extension PaywallService: PaywallDelegate {
                 }
             }
         } else {
-            let result = StoreKitService.shared.restorePurchases()
-            completion(result)
+            Task {
+                let result = try await StoreKitService.shared.restorePurchases()
+                completion(result)
+            }
         }
     }
     
