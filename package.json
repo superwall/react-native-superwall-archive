@@ -2,9 +2,7 @@
   "name": "react-native-superwall",
   "version": "0.0.1",
   "description": "Superwall package",
-  "main": "lib/commonjs/index",
-  "module": "lib/module/index",
-  "types": "lib/typescript/index.d.ts",
+  "main": "src/index",
   "react-native": "src/index",
   "source": "src/index",
   "files": [
