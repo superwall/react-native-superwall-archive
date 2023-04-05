@@ -3,7 +3,7 @@
 
 @interface RCT_EXTERN_MODULE(Superwall, RCTEventEmitter)
 
-RCT_EXTERN_METHOD(initPaywall:(NSString)superwallApiKey revenueCatApiKey:(NSString)revenueCatApiKey)
+RCT_EXTERN_METHOD(initPaywall:(NSString)superwallApiKey useRevenueCat:(BOOL)useRc)
 
 RCT_EXTERN_METHOD(trigger:(NSString)campaignName resolver: (RCTPromiseResolveBlock)resolve rejecter: (RCTPromiseRejectBlock)reject)
 
