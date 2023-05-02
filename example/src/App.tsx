@@ -11,22 +11,26 @@ import { initPaywall, trigger } from 'react-native-superwall';
 const eventEmitter = new NativeEventEmitter(NativeModules.Superwall);
 
 const superwallApiKey: string = '<YOUR_SUPERWALL_API_KEY>';
-const revenueCatApiKey: string | null = null; //Optional
 
 export default function App() {
   const [enableTrigger, setEnableTrigger] = useState(false);
+
   useEffect(() => {
-    if (superwallApiKey != '<YOUR_SUPERWALL_API_KEY>') {
+    if (superwallApiKey !== '<YOUR_SUPERWALL_API_KEY>') {
       setEnableTrigger(true);
-    }
-    initPaywall(superwallApiKey, revenueCatApiKey);
-    eventEmitter.addListener('superwallAnalyticsEvent', (res) => {
+      initPaywall(superwallApiKey, false); // if you're using RevenueCat, set this to true.  You'll need to call Purchases.configure() _before_ initPaywall
+      eventEmitter.addListener('superwallAnalyticsEvent', (res) => {
+        console.log(
+          'superwall event',
+          res?.event,
+          JSON.stringify(res?.params, null, 4)
+        );
+      });
+    } else {
       console.log(
-        'superwall event',
-        res?.event,
-        JSON.stringify(res?.params, null, 4)
+        'You need to set a SUPERWALL_API_KEY in App.tsx to use this example'
       );
-    });
+    }
   }, []);
 
   const showPaywall = async () => {
@@ -42,9 +46,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {!enableTrigger && (
-        <Text style={{ color: 'red' }}>
-          You need to set your superwallApiKey
-        </Text>
+        <Text style={styles.redText}>You need to set your superwallApiKey</Text>
       )}
       <Text>Superwall Example</Text>
       <Button
@@ -66,5 +68,8 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     marginVertical: 20,
+  },
+  redText: {
+    color: 'red',
   },
 });
