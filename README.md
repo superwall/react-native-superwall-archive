@@ -11,8 +11,7 @@ RevenueCat: https://www.revenuecat.com/
 ## Running the example
 Open example/App.tsx\
 Update the superwallApiKey var with your Superwall api key\
-Optional, update the revenueCatApiKey var with your RevenueCat key\
-
+Decide if you want to run the example integrated with RevenueCat or not...change the bool var on the call to initPaywall() to enable or disable.
 ```sh
 yarn
 yarn example ios
@@ -22,7 +21,7 @@ yarn example ios
 NOTE: Not published to npm.
 
 ```sh
-npm install react-native-superwall
+npm install https://github.com/superwall-me/react-native-superwall
 ```
 
 ## Usage
@@ -44,7 +43,7 @@ const eventEmitter = new NativeEventEmitter(NativeModules.Superwall);
 
 ### Initailize Superwall
 ```js
-initPaywall(<YOUR_SUPERWALL_API_KEY>, <OPTIONAL_REVENUECAT_KEY);
+initPaywall(<YOUR_SUPERWALL_API_KEY>, <bool to enable RevenueCat integration or not>);
 ```
 
 ### Trigger paywall
@@ -72,7 +71,7 @@ MIT
 ## TODO
 * [ ] Add event trigger params to superwall, currently nil
 * [ ] Clean up swift code
-* [ ] Publish NMP package
+* [ ] Publish NPM package
 
 ---
 

@@ -17,8 +17,8 @@ const Superwall = NativeModules.Superwall
       }
     );
 
-export function initPaywall(apiKey: string, revenueCatKey: string | null) {
-  return Superwall.initPaywall(apiKey, revenueCatKey);
+export function initPaywall(apiKey: string, useRevenueCat: boolean) {
+  return Superwall.initPaywall(apiKey, useRevenueCat);
 }
 
 export function trigger(campaignName: string) {

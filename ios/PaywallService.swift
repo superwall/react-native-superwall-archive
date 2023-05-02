@@ -3,7 +3,6 @@
 //  Superwall
 //
 //  Created by Steve McIntyre on 12/30/22.
-//  Copyright © 2022 Facebook. All rights reserved.
 //
 
 import Foundation
@@ -16,8 +15,8 @@ public var isActive = false;
 
 final class PaywallService {
     static var shared = PaywallService()
-    static func initPaywall(superwallApiKey:String, revenueCatApiKey:String) {
-        if !revenueCatApiKey.isEmpty {
+    static func initPaywall(superwallApiKey:String, useRC:Bool) {
+        if useRC {
             useRevenueCat = true;
         }
         
@@ -25,12 +24,13 @@ final class PaywallService {
         // Uncomment to show debug logs
         //options.logging.level = .debug
         if(useRevenueCat){
+            // we shouldn't configure RC, and we shouldnt be setting appUserId to null
             //Purchases.logLevel = .debug
-            Purchases.configure(
-                with: Configuration.Builder(withAPIKey: revenueCatApiKey)
-                    .with(appUserID: nil)
-                    .build()
-            )
+            // Purchases.configure(
+            //     with: Configuration.Builder(withAPIKey: revenueCatApiKey)
+            //         .with(appUserID: nil)
+            //         .build()
+            // )
             
             Purchases.shared.getCustomerInfo { (customerInfo, error) in
                 if customerInfo?.entitlements.active.isEmpty == false {
